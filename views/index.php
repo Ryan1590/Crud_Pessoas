@@ -32,6 +32,74 @@
                 </ul>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    </nav>
+
+<div class="container">
+    <div class="mt-4 text-center p-4 border rounded shadow">
+        <h1 class="mt-4 font-weight-bold">Crud Pessoas</h1>
+    </div>
+</div>
+
+<div class="container">
+    <div>
+        <button type="button" class="btn btn-primary mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#modalInserir">
+            Inserir Nova Pessoa
+        </button>
+        <div class="modal fade" id="modalInserir" tabindex="-1" aria-labelledby="modalInserirLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalInserirLabel">Inserir Nova Pessoa</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="?a=inserir" method="POST">
+                            <div class="mb-3">
+                                <label for="nome" class="form-label">Desenvolvedor:</label>
+                                <input type="text" class="form-control" id="nome" name="nome" required>
+                            </div>
+
+                            <div class="mb-3">
+                            <label for="sexo" class="form-label">Sexo:</label>
+                                <select class="form-select" id="sexo" name="sexo" required>
+                                    <option value="">Selecione...</option>
+                                    <option value="Masculino">M</option>
+                                    <option value="Feminino">F</option>
+                                    <option value="outro">Outro</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="data_nascimento" class="form-label">Data Nascimento:</label>
+                                <input type="date" class="form-control" id="data_nascimento" name="data_nascimento" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="idade" class="form-label">Idade:</label>
+                                <input type="number" class="form-control" id="idade" name="idade" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="hobby" class="form-label">Hobby:</label>
+                                <input type="text" class="form-control" id="hobby" name="hobby">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="nivel_id" class="form-label">Nível:</label>
+                                <select name="nivel_id" id="nivel_id" class="form-select" required>
+                                    <option value="" selected disabled>Selecione o nível</option>
+                                    <?php foreach ($niveis as $item) : ?>
+                                        <option value="<?= $item['id'] ?>"><?= $item['nome'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Inserir</button>
+                        </form>
+=======
+>>>>>>> bb29e9bd249cef8ad4fa65bb51d668084e495875
 </nav>
 
 <div class="container mt-4">
@@ -96,10 +164,120 @@
                                 <button type="submit" class="btn btn-primary">Inserir</button>
                             </form>
                         </div>
+<<<<<<< HEAD
+=======
+>>>>>>> c915351e1ded3273692266c1251b25d7d2ea7e9a
+>>>>>>> bb29e9bd249cef8ad4fa65bb51d668084e495875
                     </div>
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+    </div>
+
+    <div class="content">
+        <table class="table table-striped table-hover table-bordered table-responsive">
+            <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Sexo</th>
+                    <th>Data Nascimento</th>
+                    <th>Idade</th>
+                    <th>Hobby</th>
+                    <th>Nível</th>
+                    <th>Ações</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($resultadoData as $p) : ?>
+                    <tr>
+                        <td><?= $p['id'] ?></td>
+                        <td><?= $p['nome'] ?></td>
+                        <td><?= $p['sexo'] ?></td>
+                        <td><?= $p['data_nascimento'] ?></td>
+                        <td><?= $p['idade'] ?></td>
+                        <td><?= $p['hobby'] ?></td>
+                        <td><?= $p['nome_nivel'] ?></td>
+
+                        <td>
+                            <form id="formEditar<?= $p['id'] ?>" action="?a=editar" method="POST" style="display: inline;">
+                                <a href="#" class="btn btn-warning btn-editar" data-bs-toggle="modal" data-bs-target="#modalEditar<?= $p['id'] ?>"
+                                    data-id="<?= $p['id'] ?>" data-nome="<?= $p['nome'] ?>"  data-nome="<?= $p['sexo'] ?>"  data-nome="<?= $p['data_nascimento'] ?>" data-nome="<?= $p['idade'] ?>" data-nome="<?= $p['hobby'] ?>" data-nome="<?= $p['nome_nivel'] ?>">
+                                    <i class="bi bi-pencil-fill"></i> Editar
+                                </a>
+                            </form>
+                        </td>
+                        <td>
+                            <form id="formExclusao<?= $p['id'] ?>" action="?a=delete" method="POST" style="display: inline;">
+                                <input type="hidden" name="id" value="<?= $p['id'] ?>">
+                                <button type="button" class="btn btn-danger" onclick="confirmacaoExclusao(<?= $p['id'] ?>);">
+                                    <i class="bi bi-trash-fill"></i> Excluir
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    <?php foreach ($resultadoData as $p) : ?>
+        <div class="modal fade" id="modalEditar<?= $p['id'] ?>" tabindex="-1" aria-labelledby="modalEditarLabel<?= $p['id'] ?>" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalEditarLabel<?= $p['id'] ?>">Editar Nome:</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="?a=atualizar&id=<?= $p['id'] ?>" method="POST">
+                            <div class="mb-3">
+                                <label for="nome">Nome</label>
+                                <input type="text" class="form-control" id="nome<?= $p['id'] ?>" name="nome" value="<?= $p['nome'] ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="sexo">Sexo</label>
+                                <select class="form-select" id="sexo<?= $p['id'] ?>" name="sexo" required>
+                                <option value="<?= $p['sexo'] ?>" <?= $p['sexo'] != 'M' && $p['sexo'] != 'F' ? 'selected' : '' ?>><?= $p['sexo'] ?></option>
+                                    <option value="Masculino" <?= $p['sexo'] == 'M' ? 'selected' : '' ?>>M</option>
+                                    <option value="Feminino" <?= $p['sexo'] == 'F' ? 'selected' : '' ?>>F</option>
+                                    <option value="outro" <?= $p['sexo'] == 'F' ? 'selected' : '' ?>>Outro</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="data_nascimento">Data Nascimento</label>
+                                <input type="text" class="form-control" id="data_nascimento<?= $p['id'] ?>" name="data_nascimento" value="<?= $p['data_nascimento'] ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="idade">Idade</label>
+                                <input type="text" class="form-control" id="idade<?= $p['id'] ?>" name="idade" value="<?= $p['idade'] ?>" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="hobby">Hobby</label>
+                                <textarea class="form-control" id="hobby<?= $p['hobby'] ?>" name="hobby" required><?= $p['hobby'] ?></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="nivel_id" class="form-label">Nível:</label>
+                                <select name="nivel_id" id="nivel_id" class="form-select" required>
+                                    <?php foreach ($niveis as $nivel) : ?>
+                                        <option value="<?= $nivel['id'] ?>" <?= $nivel['id'] == $p['nivel_id'] ? 'selected' : '' ?>><?= $nivel['nome'] ?></option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary"  onclick="atualizar(<?= $p['id'] ?>);">Atualizar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <?php endforeach; ?>
+=======
+>>>>>>> bb29e9bd249cef8ad4fa65bb51d668084e495875
 
         <div class="content">
             <table class="table table-striped table-hover table-bordered table-responsive">
@@ -211,6 +389,10 @@
         unset($_SESSION['atualizar']);
     }
 ?>
+<<<<<<< HEAD
+=======
+>>>>>>> c915351e1ded3273692266c1251b25d7d2ea7e9a
+>>>>>>> bb29e9bd249cef8ad4fa65bb51d668084e495875
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {

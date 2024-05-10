@@ -40,6 +40,19 @@ class nivelModel extends Connect {
         $sqlCheck->execute();
         $result = $sqlCheck->fetch(PDO::FETCH_ASSOC);
 
+<<<<<<< HEAD
+=======
+
+        if ($result['total'] > 0) 
+        {
+             if (isset($_SESSION['formExcluir'])) {
+                echo "<script>";
+                echo "formExcluir('{$_SESSION['formExcluir']['tipo']}', '{$_SESSION['formExcluir']['mensagem']}');";
+                echo "</script>";
+                unset($_SESSION['formExcluir']);
+            }
+
+>>>>>>> bb29e9bd249cef8ad4fa65bb51d668084e495875
         if ($result['total'] > 0) {
             echo "Não é possivel Excluir, a niveis associados";
         } else {
@@ -47,8 +60,11 @@ class nivelModel extends Connect {
         $sqlDelete = $this->connection->prepare("DELETE FROM $this->table  WHERE id = :id");
         $sqlDelete->bindParam(':id', $id);
         $sqlDelete->execute();
+<<<<<<< HEAD
     }
 }
+=======
+>>>>>>> bb29e9bd249cef8ad4fa65bb51d668084e495875
 
 }
 

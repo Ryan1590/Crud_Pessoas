@@ -52,6 +52,21 @@ private $table;
         $sqlDelete = $this->connection->prepare("DELETE FROM $this->table  WHERE id = :id");
         $sqlDelete->bindParam(':id', $id);
         $sqlDelete->execute();
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+
+        if($sqlDelete) {
+            if (isset($_SESSION['confirmacaoExclusao'])) {
+                echo "<script>";
+                echo "confirmacaoExclusao('{$_SESSION['confirmacaoExclusao']['tipo']}', '{$_SESSION['confirmacaoExclusao']['mensagem']}');";
+                echo "</script>";
+                unset($_SESSION['confirmacaoExclusao']);
+            }
+        }
+=======
+>>>>>>> c915351e1ded3273692266c1251b25d7d2ea7e9a
+>>>>>>> bb29e9bd249cef8ad4fa65bb51d668084e495875
     }
 
 }
