@@ -52,6 +52,7 @@ private $table;
         $sqlDelete = $this->connection->prepare("DELETE FROM $this->table  WHERE id = :id");
         $sqlDelete->bindParam(':id', $id);
         $sqlDelete->execute();
+<<<<<<< HEAD
 
         if($sqlDelete) {
             if (isset($_SESSION['confirmacaoExclusao'])) {
@@ -61,6 +62,8 @@ private $table;
                 unset($_SESSION['confirmacaoExclusao']);
             }
         }
+=======
+>>>>>>> c915351e1ded3273692266c1251b25d7d2ea7e9a
     }
 
 }

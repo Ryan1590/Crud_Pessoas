@@ -32,6 +32,7 @@
                 </ul>
             </div>
         </div>
+<<<<<<< HEAD
     </nav>
 
 <div class="container">
@@ -45,6 +46,19 @@
         <button type="button" class="btn btn-primary mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#modalInserir">
             Inserir Novo Nivel
         </button>
+=======
+</nav>
+
+<div class="container mt-4">
+    <button type="button" class="btn btn-primary mt-3 mb-3" data-bs-toggle="modal" data-bs-target="#modalInserir">
+        Inserir Novo Nivel
+    </button>
+</div>
+
+<div class="container mt-2">
+    <div class="p-4 border rounded bg-white shadow">
+            <h1 class="mb-4">Níveis</h1>
+>>>>>>> c915351e1ded3273692266c1251b25d7d2ea7e9a
         <div class="modal fade" id="modalInserir" tabindex="-1" aria-labelledby="modalInserirLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -64,6 +78,7 @@
                 </div>
             </div>
         </div>
+<<<<<<< HEAD
     </div>
 
     <?php foreach ($resultado as $p) : ?>
@@ -123,6 +138,67 @@
                 <?php endforeach; ?>
             </tbody>
         </table>
+=======
+       
+        <?php foreach ($resultado as $p) : ?>
+            <div class="modal fade" id="modalEditar<?= $p['id'] ?>" tabindex="-1" aria-labelledby="modalEditarLabel<?= $p['id'] ?>" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalEditarLabel<?= $p['id'] ?>">Editar Nivel</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="?a=atualizar&id=<?= $p['id'] ?>" method="POST">
+                                <div class="mb-3">
+                                    <label for="nome">Nivel:</label>
+                                    <input type="text" class="form-control" id="nome<?= $p['id'] ?>" name="nome" value="<?= $p['nome'] ?>" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary"  onclick="atualizar(<?= $p['id'] ?>);">Atualizar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endforeach; ?>
+
+        <div class="content">
+            <table class="table table-striped table-hover table-bordered table-responsive">
+                <thead class="table-white">
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($resultado as $p) : ?>
+                        <tr>
+                            <td><?= $p['id'] ?></td>
+                            <td><?= $p['nome'] ?></td>
+                            <td>
+                                <form id="formEditar<?= $p['id'] ?>" action="?a=editar" method="POST" style="display: inline;">
+                                    <a href="#" class="btn btn-warning btn-editar" data-bs-toggle="modal" data-bs-target="#modalEditar<?= $p['id'] ?>"
+                                        data-id="<?= $p['id'] ?>" data-nome="<?= $p['nome'] ?>">
+                                        <i class="bi bi-pencil-fill"></i> Editar
+                                    </a>
+                                </form>
+                            </td>
+                            <td>
+                                <form id="formExcluir<?= $p['id'] ?>" action="?a=delete" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id" value="<?= $p['id'] ?>">
+                                    <button type="submit" class="btn btn-danger">
+                                        <i class="bi bi-trash-fill"></i> Excluir
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+>>>>>>> c915351e1ded3273692266c1251b25d7d2ea7e9a
     </div>
 </div>
 
